@@ -1,0 +1,12 @@
+$primary : #177E89;
+$secondary: #721121;
+
+.navbar {
+  background-color: $primary;
+}
+
+h1 {
+  color: $secondary;
+}
+
+@import "~bootstrap/scss/bootstrap.scss";
