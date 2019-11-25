@@ -65,14 +65,11 @@ class WildController extends AbstractController
 
 
     /**
-     * @Route("/show/{categoryName}", requirements={"slug"="[a-z0-9-]+"}, defaults={"category"="Aucune série sélectionnée, veuillez choisir une série"}, name="show_category")
+     * @Route("/category/{categoryName}", requirements={"categoryName"="[a-z0-9-]+"}, defaults={"category"="Aucune série sélectionnée, veuillez choisir une série"}, name="show_category")
      */
     public function showByCategory(string $categoryName)
     {
-        if (!$categoryName) {
-            throw $this
-                ->createNotFoundException("Please give us a valid category");
-        }
+
 
         $categoryName = str_replace("-", " ", $categoryName);
         $categoryName = ucwords($categoryName);
@@ -81,7 +78,10 @@ class WildController extends AbstractController
             ->getRepository(Category::class)
             ->findOneBy(["name" => mb_strtolower($categoryName)]);
 
-        if (!$category) {
+        if (!$categoryName) {
+            throw $this
+                ->createNotFoundException("Please give us a valid category");
+        } elseif (!$category) {
             throw $this
                 ->createNotFoundException("No category with " . $categoryName . " name, found in category's table.");
         }
