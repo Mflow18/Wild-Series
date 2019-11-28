@@ -141,4 +141,16 @@ class WildController extends AbstractController
             'seasons' => $season,
         ]);
     }
+
+    /**
+     * @route("/episode/{id}", defaults={"id"="Aucun épisode sélectionnée, veuillez choisir une série"}, name="show_episode")
+     */
+    public function showEpisode(Episode $episode)
+    {
+        return $this->render('wild/episode.html.twig', [
+            'episode' => $episode
+        ]
+        );
+    }
+
 }
