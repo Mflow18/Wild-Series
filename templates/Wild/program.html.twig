@@ -4,7 +4,7 @@
 {% block body %}
     {% for season in seasons %}
         <div>
-            <h2>{{ season.description }}</h2>
+            <h2><a href="{{ path('wild_show_seasons', { 'id': season.id }) }}" > {{ season.description }}</h2>
             <p>{{ season.description }}</p>
         </div>
     {% else %}
