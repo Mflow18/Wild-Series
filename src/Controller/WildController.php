@@ -7,9 +7,11 @@ use App\Entity\Season;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\Category;
 use App\Entity\Program;
+use App\Form\ProgramSearchType;
 
 /**
  * @Route("/wild", name="wild_")
@@ -31,8 +33,16 @@ class WildController extends AbstractController
             );
         }
 
+        $form = $this->createForm(
+            ProgramSearchType::class,
+            null,
+            ['method' => Request::METHOD_GET]
+        );
+
         return $this->render('wild/index.html.twig',
-            ['programs' => $programs]
+            ['programs' => $programs,
+                'form' => $form->createView(),
+            ]
         );
 
     }
@@ -141,4 +151,16 @@ class WildController extends AbstractController
             'seasons' => $season,
         ]);
     }
+
+    /**
+     * @route("/episode/{id}", defaults={"id"="Aucun épisode sélectionnée, veuillez choisir une série"}, name="show_episode")
+     */
+    public function showEpisode(Episode $episode)
+    {
+        return $this->render('wild/episode.html.twig', [
+                'episode' => $episode
+            ]
+        );
+    }
+
 }
