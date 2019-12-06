@@ -7,25 +7,20 @@ use App\Entity\Actor;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker;
 
 class ActorFixtures extends Fixture implements DependentFixtureInterface
 {
-    const ACTORS = [
-        'Liam Neeson',
-        'Ricardo Milos',
-        'Sarah Michelle Gellar',
-        'Roberto Malone',
-        'Michael Jackson'
-    ];
 
     public function load(ObjectManager $manager)
     {
-        foreach (SELF::ACTORS as $key => $actorName) {
+        $faker = Faker\Factory::create('fr_FR');
+        for ($i = 0; $i < 50; $i++) {
             $actor = new Actor();
-            $actor->setName($actorName);
+            $actor->setName($faker->name);
 
             $manager->persist($actor);
-            $this->addReference('acteur_' . $key, $actor);
+            $this->addReference('acteur_' . $i, $actor);
         }
 
         $manager->flush();

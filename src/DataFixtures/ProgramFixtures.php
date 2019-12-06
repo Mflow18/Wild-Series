@@ -87,6 +87,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [CategoryFixtures::class];
+        return [SeasonFixtures::class];
 
     }
 }
