@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actor{% endblock %}
+
+{% block body %}
+
+    <h1>{{ actor.name }}</h1>
+    {% for program in actor.programs %}
+        <h2>{{ program.title }}</h2>
+        <img src="{{ program.poster }}">
+    {% endfor %}
+
+{% endblock %}
