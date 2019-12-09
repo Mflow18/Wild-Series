@@ -25,3 +25,7 @@ https://www.loom.com/share/d0b185cbee174ec2ab5f4353dc270bd4
 Lien vers la vidéo de la quête Symfony 15 :
 
 https://www.loom.com/share/0d75703fabe64aedb41695f4abf5a4fc
+
+Lien vers la vidéo de la quête Symfony 16 :
+
+https://www.loom.com/share/267563b6443b4363855c04de1555d095
