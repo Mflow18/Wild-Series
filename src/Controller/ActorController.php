@@ -49,7 +49,7 @@ class ActorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="actor_show", methods={"GET"})
+     * @Route("/{Slug}", requirements={"slug"="[a-z0-9-]+"}, name="actor_show", methods={"GET"})
      */
     public function show(Actor $actor): Response
     {
@@ -59,7 +59,7 @@ class ActorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="actor_edit", methods={"GET","POST"})
+     * @Route("/{Slug}/edit", name="actor_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Actor $actor): Response
     {
@@ -83,7 +83,7 @@ class ActorController extends AbstractController
      */
     public function delete(Request $request, Actor $actor): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$actor->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $actor->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($actor);
             $entityManager->flush();
