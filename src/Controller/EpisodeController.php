@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Episode;
+use App\Entity\User;
 use App\Form\EpisodeType;
+use App\Repository\CommentRepository;
 use App\Repository\EpisodeRepository;
+use App\Repository\UserRepository;
 use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,6 +61,7 @@ class EpisodeController extends AbstractController
     public function show(Episode $episode): Response
     {
         return $this->render('episode/show.html.twig', [
+            'comments' => $episode->getComments(),
             'episode' => $episode,
         ]);
     }
