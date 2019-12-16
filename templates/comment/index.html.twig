@@ -7,13 +7,13 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Comment</th>
-                <th>Rate</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Comment</th>
+            <th>Rate</th>
+            <th>CreatedAt</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for comment in comments %}
@@ -24,7 +24,9 @@
                 <td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('comment_show', {'id': comment.id}) }}">show</a>
-                    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
+                    {% if app.user is same as (comment.author) %}
+                        <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

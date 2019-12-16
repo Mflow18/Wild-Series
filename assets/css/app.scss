@@ -13,4 +13,9 @@ h1 {
   color: $primary;
 }
 
+.base {
+  with: 80%;
+  margin: auto;
+}
+
 @import "~bootstrap/scss/bootstrap.scss";
