@@ -5,14 +5,17 @@
 
 
     <h1>{{ episode.title }}</h1>
-    <h2><a href="{{ path('wild_show_programs', { 'programName': 'walking-dead' }) }}" >{{ episode.season.program.title }}</a></h2>
-    <h2><a href="{{ path('wild_show_seasons', { 'id': episode.season.id }) }}" >{{ episode.season.description }} - {{ episode.season.year }}</a></h2>
+    <h2>
+        <a href="{{ path('wild_show_programs', { 'programName': 'walking-dead' }) }}">{{ episode.season.program.title }}</a>
+    </h2>
+    <h2><a href="{{ path('wild_show_seasons', { 'id': episode.season.id }) }}">{{ episode.season.description }}
+            - {{ episode.season.year }}</a></h2>
     <img src="{{ episode.season.program.poster }}">
-    <p>{{ episode.season.program.category.name}}</p>
-        <div>
-            <h2>{{ episode.title }}</h2>
-            <p>{{ episode.synopsis }}</p>
-        </div>
+    <p>{{ episode.season.program.category.name }}</p>
+    <div>
+        <h2>{{ episode.title }}</h2>
+        <p>{{ episode.synopsis }}</p>
+    </div>
 
     <a href="{{ path('app_index') }}">
         Retour à l'accueil
